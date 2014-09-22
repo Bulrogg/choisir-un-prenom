@@ -21,7 +21,7 @@
       <![endif]-->
 
       <!-- Add your site or application content here -->
-      <div class="container">
+      <div class="container" ng-controller="choisirUnPrenomCtrl">
 
         <div class="panel panel-default">
           <div class="panel-heading">Choix des prénoms en entrée</div>
@@ -31,7 +31,7 @@
               <div class="form-group">
                 <label for="nom" class="col-xs-2 control-label">Nom</label>
                 <div class="col-xs-10">
-                  <input id="nom" type="nom" class="form-control" placeholder="Quel sera le futur nom de famille de l'enfant ?">
+                  <input id="nom" type="nom" class="form-control" placeholder="Quel sera le futur nom de famille de l'enfant ?" ng-model="nom">
                 </div>
               </div>
 
@@ -39,13 +39,13 @@
                 <label for="sexe" class="col-xs-2 control-label">Sexe</label>
                 <div class="col-xs-10">
                   <label class="radio-inline">
-                    <input id="sexe-fille" type="radio" name="sexe" value="FILLE"> Fille
+                    <input id="sexe-fille" type="radio" name="sexe" value="FILLE" ng-model="sexe"> Fille
                   </label>
                   <label class="radio-inline">
-                    <input id="sexe-garcon" type="radio" name="sexe" value="GARCON"> Garçon
+                    <input id="sexe-garcon" type="radio" name="sexe" value="GARCON" ng-model="sexe"> Garçon
                   </label>
                   <label class="radio-inline">
-                    <input id="sexe-peu-importe" type="radio" name="sexe" value="PEU_IMPORTE"> Peu importe
+                    <input id="sexe-peu-importe" type="radio" name="sexe" value="PEU_IMPORTE" ng-model="sexe"> Peu importe
                   </label>
                 </div>
               </div>
@@ -57,33 +57,24 @@
         <div class="panel panel-default">
           <div class="panel-heading">Alors ? Oui ou Non ?</div>
           <div class="panel-body">
-            
-            <h2>Frédéric Millard</h2>
+
+            <div class="row">
+              <span class="col-xs-6">{{prenomPropose}}</span>
+              <span class="col-xs-6">{{nom}}</span>
+            </div>
 
             <div class="btn-group btn-group-justified">
-              <a class="btn btn-success" role="button">On garde !</a>
-              <a class="btn btn-danger" role="button">Poubelle</a>
+              <a class="btn btn-success" role="button" ng-click="onGarde()">On garde !</a>
+              <a class="btn btn-danger" role="button" ng-click="poubelle()">Poubelle</a>
             </div>
 
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Oui ou Non ?</div>
-              <div class="panel-body">
-                TODO Oui ou non
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Oui ou Non ?</div>
-              <div class="panel-body">
-                TODO Oui ou non
-              </div>
-            </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Les prénoms gardés</div>
+          <div class="panel-body">
+            {{listeDesPrenomsGardes}}
           </div>
         </div>
 
