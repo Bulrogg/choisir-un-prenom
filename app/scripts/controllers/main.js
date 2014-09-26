@@ -29,7 +29,10 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomPropose = $scope.prenomAProposer.pop();
 		};
 
-		// TODO mettre en forme la liste des prénoms gardés
+		// Brancher gauche / droite pour les boutons
+		// TODO supprimer les doublons au moment du changement de prénoms
+		// TODO pouvoir sauvegarder les listes oui et non
+		// TODO pouvoir sauvegarder les options
 		// TODO réinitialiser la liste des prénoms au moment du changement de sexe
 		// TODO ajouter un lien vers le site prenoms.com
 
