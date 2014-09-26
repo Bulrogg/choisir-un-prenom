@@ -31,6 +31,7 @@ angular.module('choisirUnPrenomApp')
 
 		// TODO mettre en forme la liste des prénoms gardés
 		// TODO réinitialiser la liste des prénoms au moment du changement de sexe
+		// TODO ajouter un lien vers le site prenoms.com
 
 		$scope.changerDePrenom();
 
