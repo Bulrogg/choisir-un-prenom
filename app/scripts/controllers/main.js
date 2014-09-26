@@ -49,7 +49,7 @@ angular.module('choisirUnPrenomApp')
 			var prenomsARetourner = (sexe === 'FILLE') ? tousLesPrenomsFilles : (sexe === 'GARCON') ? tousLesPrenomsGarcons : tousLesPrenomsFilles.concat(tousLesPrenomsGarcons);
 
 			// on mélange
-			// TODO
+			prenomsARetourner = _.shuffle(prenomsARetourner);
 
 			// on retourne
 			prenomsARetourner = prenomsARetourner.length > nbPrenom ? prenomsARetourner.slice(0, nbPrenom - 1) : prenomsARetourner;
