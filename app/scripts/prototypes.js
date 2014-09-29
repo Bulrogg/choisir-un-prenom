@@ -9,13 +9,13 @@ String.prototype.sansAccent = function(){
         /[\331-\334]/g, /[\371-\374]/g, // U, u
         /[\321]/g, /[\361]/g, // N, n
         /[\307]/g, /[\347]/g, // C, c
-    ];
-    var noaccent = ['A','a','E','e','I','i','O','o','U','u','N','n','C','c'];
-     
-    var str = this;
-    for(var i = 0; i < accent.length; i++){
-        str = str.replace(accent[i], noaccent[i]);
-    }
-     
-    return str;
-}
+        ];
+        var noaccent = ['A','a','E','e','I','i','O','o','U','u','N','n','C','c'];
+        
+        var str = this;
+        for(var i = 0; i < accent.length; i++){
+            str = str.replace(accent[i], noaccent[i]);
+        }
+        
+        return str;
+    };

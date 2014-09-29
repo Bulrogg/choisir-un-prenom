@@ -70,7 +70,6 @@ angular.module('choisirUnPrenomApp')
 		// TODO Ajouter un message si le navigateur ne gère pas le local storage
 		// TODO Ajouter un bouton pour réinitialiser le local storage
 		// TODO ajouter un bouton pour exporter la conf + recherche
-		// TODO brancher google analytics
 
 		$scope.reinitialiserSystemePropositionPrenom();
 
