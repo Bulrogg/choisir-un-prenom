@@ -61,7 +61,6 @@ angular.module('choisirUnPrenomApp')
 
 		// TODO ajouter un lien vers le site prenoms.com
 		// TODO permettre d'ajouter un prénom directement dans la liste avec autocompletion
-		// TODO permettre de cliquer sur un prénom de la liste (rejete ou accepte) pour la recharger dans le trieur
 		// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
 
 		// TODO ajouter de la persistence local storage
