@@ -58,15 +58,19 @@
           <div class="panel-heading">Alors ? Oui ou Non ?</div>
           <div class="panel-body">
 
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="prenom">{{prenomPropose}}</span><span class="nom">{{nom}}</span>
+            <div ng-show="prenomPropose">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="prenom">{{prenomPropose}}</span><span class="nom">{{nom}}</span>
+                </div>
+              </div>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-success" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-arrow-left"></span> On garde !</a>    
+                <a class="btn btn-danger" role="button" ng-click="poubelle()">Poubelle <span class="glyphicon glyphicon-arrow-right"></span></a>
               </div>
             </div>
-
-            <div class="btn-group btn-group-justified">
-              <a class="btn btn-success" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-arrow-left"></span> On garde !</a>    
-              <a class="btn btn-danger" role="button" ng-click="poubelle()">Poubelle <span class="glyphicon glyphicon-arrow-right"></span></a>
+            <div ng-hide="prenomPropose">
+              Plus de prénoms à proposer
             </div>
 
           </div>
