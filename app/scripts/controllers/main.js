@@ -7,6 +7,7 @@ angular.module('choisirUnPrenomApp')
 		$scope.nom = 'Millard';
 		$scope.sexe = 'FILLE';
 		$scope.prenomPropose = '';
+		$scope.prenomProposeUrlInfo = '';
 		$scope.listeDesPrenomsGardes = [];
 		$scope.listeDesPrenomsRejetes = [];
 		$scope.prenomAProposer = [];
@@ -23,7 +24,11 @@ angular.module('choisirUnPrenomApp')
 		};
 
 		$scope.chargerLePrenomAProposerSuivant = function () {
-			$scope.prenomPropose = $scope.prenomAProposer.pop();
+			var nouveauPrenomAProposer = $scope.prenomAProposer.pop();
+			$scope.prenomPropose = nouveauPrenomAProposer;
+			// TODO externaliser l'url dans des properties
+			var prenomPourUrl = nouveauPrenomAProposer ? nouveauPrenomAProposer.sansAccent().toUpperCase() : '';
+			$scope.prenomProposeUrlInfo = nouveauPrenomAProposer ? 'http://www.prenoms.com/prenom/'+prenomPourUrl+'.html' : '';
 		};
 
 		$scope.chargerListePrenomsAProposer = function () {
@@ -59,7 +64,6 @@ angular.module('choisirUnPrenomApp')
 
 		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);
 
-		// TODO ajouter un lien vers le site prenoms.com
 		// TODO permettre d'ajouter un prénom directement dans la liste avec autocompletion
 		// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
 
@@ -68,6 +72,8 @@ angular.module('choisirUnPrenomApp')
 		// TODO Ajouter un bouton pour réinitialiser le local storage
 		// TODO ajouter un bouton pour exporter la conf + recherche
 		// TODO brancher google analytics
+
+		// TODO supprimer le système de TODO
 
 		$scope.reinitialiserSystemePropositionPrenom();
 
