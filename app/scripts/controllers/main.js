@@ -10,6 +10,7 @@ angular.module('choisirUnPrenomApp')
 		$scope.listeDesPrenomsGardes = [];
 		$scope.listeDesPrenomsRejetes = [];
 		$scope.prenomAProposer = [];
+		$scope.afficherConsoleDebug = true;
 
 		$scope.onGarde = function() {
 			$scope.listeDesPrenomsGardes.push($scope.prenomPropose);
@@ -29,7 +30,6 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomPropose = $scope.prenomAProposer.pop();
 		};
 
-		// TODO ajouter une console de debug
 		// TODO supprimer les doublons au moment du changement de prénoms
 		// TODO pouvoir sauvegarder les listes oui et non
 		// TODO pouvoir sauvegarder les options
