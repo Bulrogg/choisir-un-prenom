@@ -14,42 +14,54 @@ angular.module('choisirUnPrenomApp')
 
 		$scope.onGarde = function() {
 			$scope.listeDesPrenomsGardes.push($scope.prenomPropose);
-			$scope.changerDePrenom();
+			$scope.chargerLePrenomAProposerSuivant();
 		};
 
 		$scope.poubelle = function() {
 			$scope.listeDesPrenomsRejetes.push($scope.prenomPropose);
-			$scope.changerDePrenom();
+			$scope.chargerLePrenomAProposerSuivant();
 		};
 
-		$scope.changerDePrenom = function () {
-			if($scope.prenomAProposer.length === 0) {
-				// TODO sortir le 3 dans une constante
-				$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
-			}
+		$scope.chargerLePrenomAProposerSuivant = function () {
 			$scope.prenomPropose = $scope.prenomAProposer.pop();
 		};
 
-		// TODO supprimer les doublons au moment du changement de prénoms
-		// TODO pouvoir sauvegarder les listes oui et non
-		// TODO pouvoir sauvegarder les options
-		// TODO réinitialiser la liste des prénoms au moment du changement de sexe
+		$scope.chargerListePrenomsAProposer = function () {
+			$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
+		};
+
+		$scope.reinitialiserSystemePropositionPrenom = function() {
+			// Récupération de tous les prénoms
+			$scope.chargerListePrenomsAProposer();
+
+			// Suppression des prénoms déjà rencontrés
+			var prenomsDejaRencontres = $scope.listeDesPrenomsGardes.concat($scope.listeDesPrenomsRejetes);
+			$scope.prenomAProposer = $window._.difference($scope.prenomAProposer, prenomsDejaRencontres);
+			$scope.prenomAProposer = $window._.uniq($scope.prenomAProposer);
+
+			// Proposition d'un nouveau prénoms
+			$scope.chargerLePrenomAProposerSuivant();	
+		};
+
+		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);
+
 		// TODO ajouter un lien vers le site prenoms.com
 		// TODO permettre d'ajouter un prénom directement dans la liste avec autocompletion
 		// TODO permettre de cliquer sur un prénom de la liste (rejete ou accepte) pour la recharger dans le trieur
 		// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
 		// TODO ne pas proposer des prénoms de la liste accepté / rejeté
 		// TODO gérer le cas ou la liste des prénoms est vide
-		// TODO Brancher gauche / droite pour les boutons
+		// TODO Supprimer fleches oui / non
+
 		// TODO ajouter de la persistence local storage
 		// TODO Ajouter un message si le navigateur ne gère pas le local storage
 		// TODO Ajouter un bouton pour réinitialiser le local storage
 		// TODO ajouter un bouton pour exporter la conf + recherche
+		// TODO brancher google analytics
 
-		$scope.changerDePrenom();
+		$scope.reinitialiserSystemePropositionPrenom();
 
 	}])
-
 
 	.factory('donneMoiDesPrenoms', ['$window', function($window) {
 		return function(sexe) {			
