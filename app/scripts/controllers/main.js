@@ -30,6 +30,20 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
 		};
 
+		$scope.rechargerPrenomGarde = function(prenomARecharger) {
+			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsGardes', prenomARecharger);
+		};
+
+		$scope.rechargerPrenomRejete = function(prenomARecharger) {
+			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsRejetes', prenomARecharger);
+		};
+
+		$scope.rechargerPrenomDepuisLaListe = function(listePrenomsSource, prenomARecharger) {
+			$scope[listePrenomsSource] = $window._.without($scope[listePrenomsSource], prenomARecharger);
+			$scope.prenomAProposer.push($scope.prenomPropose, prenomARecharger);
+			$scope.chargerLePrenomAProposerSuivant();	
+		};
+
 		$scope.reinitialiserSystemePropositionPrenom = function() {
 			// Récupération de tous les prénoms
 			$scope.chargerListePrenomsAProposer();
@@ -40,7 +54,7 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomAProposer = $window._.uniq($scope.prenomAProposer);
 
 			// Proposition d'un nouveau prénoms
-			$scope.chargerLePrenomAProposerSuivant();	
+			$scope.chargerLePrenomAProposerSuivant();
 		};
 
 		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);

@@ -81,7 +81,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">Les prénoms gardés</div>
               <div class="panel-body">
-                <span ng-repeat="prenom in listeDesPrenomsGardes">{{prenom}} | </span>
+                <span ng-repeat="prenom in listeDesPrenomsGardes"><a ng-click="rechargerPrenomGarde(prenom)">{{prenom}} | </a></span>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">Les prénoms rejetés</div>
               <div class="panel-body">
-                <span ng-repeat="prenom in listeDesPrenomsRejetes">{{prenom}} | </span>
+                <span ng-repeat="prenom in listeDesPrenomsRejetes"><a ng-click="rechargerPrenomRejete(prenom)">{{prenom}} | </a></span>
               </div>
             </div>
           </div>
