@@ -63,9 +63,7 @@
                 <div class="col-xs-12">
                   <span class="prenom">{{prenomPropose}}</span>
                   <span class="nom">{{nom}}</span>
-                  <a href="{{prenomProposeUrlInfo}}"><span class="glyphicon glyphicon-info-sign"></span></a>
-
-                  
+                  <a href="{{prenomProposeUrlInfo}}" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a>
                 </div>
               </div>
               <div class="btn-group btn-group-justified">
@@ -96,18 +94,6 @@
                 <span ng-repeat="prenom in listeDesPrenomsRejetes"><a ng-click="rechargerPrenomRejete(prenom)">{{prenom}} | </a></span>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="panel panel-default debug" ng-show="afficherConsoleDebug">
-          <div class="panel-heading">Debug</div>
-          <div class="panel-body">
-            <p>nom : {{nom}}</p>
-            <p>sexe : {{sexe}}</p>
-            <p>prenomPropose : {{prenomPropose}}</p>
-            <p>listeDesPrenomsGardes : {{listeDesPrenomsGardes}}</p>
-            <p>listeDesPrenomsRejetes : {{listeDesPrenomsRejetes}}</p>
-            <p>prenomAProposer : {{prenomAProposer}}</p>
           </div>
         </div>
 
