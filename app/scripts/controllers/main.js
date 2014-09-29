@@ -24,13 +24,12 @@ angular.module('choisirUnPrenomApp')
 		$scope.changerDePrenom = function () {
 			if($scope.prenomAProposer.length === 0) {
 				// TODO sortir le 3 dans une constante
-				$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe, 3);
+				$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
 			}
 			$scope.prenomPropose = $scope.prenomAProposer.pop();
 		};
 
-		// TODO Brancher gauche / droite pour les boutons
-		// TODO supprimer la taille de chargement de la liste de prénoms
+		// TODO ajouter une console de debug
 		// TODO supprimer les doublons au moment du changement de prénoms
 		// TODO pouvoir sauvegarder les listes oui et non
 		// TODO pouvoir sauvegarder les options
@@ -41,6 +40,11 @@ angular.module('choisirUnPrenomApp')
 		// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
 		// TODO ne pas proposer des prénoms de la liste accepté / rejeté
 		// TODO gérer le cas ou la liste des prénoms est vide
+		// TODO Brancher gauche / droite pour les boutons
+		// TODO ajouter de la persistence local storage
+		// TODO Ajouter un message si le navigateur ne gère pas le local storage
+		// TODO Ajouter un bouton pour réinitialiser le local storage
+		// TODO ajouter un bouton pour exporter la conf + recherche
 
 		$scope.changerDePrenom();
 
@@ -48,7 +52,7 @@ angular.module('choisirUnPrenomApp')
 
 
 	.factory('donneMoiDesPrenoms', ['$window', function($window) {
-		return function(sexe, nbPrenom) {			
+		return function(sexe) {			
 			// tous les prenoms disponibles
 			// TODO sortir les prenoms dans une constante
 			var tousLesPrenomsFilles = ['Abella','Ada','Adelaide','Adele','Adeline','Adnette','Adrienne','Agathe','Aglaee','Agnes','Aimee','Albane','Albe','Alberta','Alberte','Albertine','Alda','Alette','Alex','Alexandra','Alexandrie','Alexane','Alexia','Alice','Alida','Aline','Alison','Alix','Alizee','Allison','Alphonsine','Amanda','Amandine','Amarante','Ambre','Ambroise','Amelie','Anais','Anastasie','Andree','Angele','Angeline','Angelique','Anna','Annabelle','Annaelle','Anne','Anneliese','Annette','Annick','Annie','Annonciade','Anouchka','Anouck','Antoinette','Apolline','Aquiline','Ariane','Arianne','Aricie','Arielle','Arlette','Armance','Armande','Armel','Armela','Armelle','Arnaude','Ashley','Astrid','Aude','Audrey','Augusta','Augustine','Aure','Aurelie','Auriane','Aurianne','Aurore','Axelle','Babette','Babine','Barbara','Barbe','Barberine','Beatrice','Benedicte','Benjamine','Benoîte','Berengere','Berenice','Bernadette','Bernardine','Berthe','Bertille','Bettina','Betty','Bienvenue','Blanca','Blanche','Blandine','Bluette','Brigitte','Camille','Candice','Candy','Capucine','Carine','Carmen','Carmine','Carole','Caroline','Cassandra','Catherine','Cathy','Cecile','Celeste','Célestine','Celia','Celine','Cerise','Cesarine','Chantal','Charlette','Charley','Charline','Charlotte','Chloe','Christel','Christelle','Christiane','Christianne','Christine','Claire','Clara','Clarence','Clarice','Clarisse','Claude','Claudette','Claudia','Claudine','Clea','Clelia','Clemence','Clementine','Clothilde','Clotilde','Colette','Colombe','Constance','Cora','Coralie','Corinna','Corinne','Cosette','Cunégonde','Cyrille','Dahlia','Daisy','Daniele','Danielle','Danitza','Danny','Daphnee','Daria','Deborah','Delphine','Denise','Désirée','Diane','Dianne','Dolores','Dominique','Domitille','Donatienne','Dora','Doriane','Dorine','Doris','Dorothee','Edith','Edma','Edmee','Edouardine','Edwige','Eleonore','Elfi','Eliane','Eliette','Eline','Elisabeth','Elise','Elisee','Ella','Ellenita','Elodie','Éloise','Elsa','Elsy','Elvire','Elysée','Emeline','Emilie','Emilienne','Emma','Emmanuelle','Erika','Ernestine','Esperance','Estelle','Esther','Eugenie','Eulalie','Eurielle','Eva','Eve','Evelyne','Fabienne','Fabiola','Fanchon','Fanny','Faustine','Felicie','Félicienne','Felicite','Fernande','Fiona','Flamine','Flavie','Fleur','Flora','Flore','Florence','Florette','Florianne','Franceline','Francette','Francine','Francis','Francoise','Frankie','Frederique','Frida','Gabrielle','Gaelle','Gaetane','Genevieve','Georgette','Georgine','Geraldine','Germaine','Geronima','Gertrude','Gervaise','Ghislaine','Gigi','Gilberte','Gina','Ginette','Gisele','Giselle','Godeliève','Grace','Gracieuse','Guennole','Guillemette','Gwenael','Gwenaelle','Gwendoline','Gwenola','Gwladys','Hannah','Hedwige','Helena','Helene','Heliena','Héloïse','Helyette','Henriette','Hermance','Hermine','Hilda','Hippolyte','Honorine','Hortense','Huguette','Hyacinthe','Iadine','Ida','Ilona','Ilse','Ines','Ingrid','Irene','Irenee','Iris','Irma','Isabeau','Isabel','Isabelle','Isaie','Isaline','Ivana','Jacinthe','Jackie','Jacqueline','Jacquette','Jacquine','Jacquotte','Jane','Jasmine','Jeanine','Jeanne','Jeannette','Jeannine','Jenny','Jessica','Joceline','Jocelyne','Joelle','Johanne','Jordanne','Josée','Josèphe','Josephine','Josette','Josiane','Josseline','Juanita','Jude','Judith','Juliane','Julianne','Julie','Julienne','Juliette','Justine','Karelle','Karen','Karina','Karine','Kassandra','Katel','Katia','Katy','Ketty','Laetitia','Lara','Larissa','Laura','Lauranne','Laure','Laurence','Laurentine','Laurette','Lauriane','Laurie','Lea','Leandre','Lelia','Lena','Leone','Leonie','Leonilde','Leonore','Leontine','Leslie','Lia','Liane','Lidwine','Lila','Lilian','Liliane','Lily','Linda','Line','Lisa','Lisbeth','Lise','Lisette','Lizzie','Logan','Lois','Lola','Lolita','Loraine','Lore','Louise','Luana','Luce','Lucette','Lucie','Lucienne','Lucile','Lucille','Lucinde','Lucrece','Ludmilla','Lydia','Lydiane','Lydie','Lynda','Macrine','Maddy','Madeleine','Madeline','Maelle','Maeva','Magali','Magalie','Magaly','Maggy','Maite','Manon','Marceline','Marcelle','Marcelline','Margaux','Margot','Marguerite','Maria','Mariam','Marianne','Marie','Marie-Eve','Marie-France','Marie-Josee','Marie-Line','Marie-Madeleine','Marielle','Mariette','Marika','Marilyne','Marina','Marine','Marinette','Marion','Marise','Marissa','Marjolaine','Marjorie','Marlene','Marthe','Martine','Mary','Maryline','Maryse','Maryvonne','Mathilde','Maud','Maude','Mauricette','Maximilienne','Maylis','Megan','Melaine','Melanie','Melissa','Melodie','Melyna','Meredith','Meryl','Michele','Micheline','Michelle','Mildred','Milene','Mirabelle','Mireille','Miriam','Modestine','Monica','Monique','Morgaine','Morgane','Muguet','Muguette','Muriel','Murielle','Mylene','Myriam','Myrtille','Nadege','Nadette','Nadia','Nadine','Nancy','Narcisse','Natacha','Natalie','Natalya','Nathalie','Nathanaelle','Nelly','Nicole','Nicoletta','Nicolette','Nina','Ninette','Ninon','Noeline','Noella','Noelle','Noemie','Nolwenn','Nora','Oceane','Octavie','Odette','Odile','Odilon','Olga','Olive','Olivette','Olivia','Olympe','Ombeline','Ophelie','Oriane','Orianne','Pamela','Paola','Paquerette','Paquita','Pascale','Pascaline','Patricia','Paula','Paule','Paulette','Pauline','Peggy','Pelagie','Pénélope','Perlette','Pernelle','Peroline','Perrette','Perrine','Pervenche','Philiberte','Philippine','Pierrette','Placide','Prisca','Priscille','Prudence','Quitterie','Rachel','Radegonde','Raissa','Raphaelle','Raymonde','Rebecca','Regine','Reine','Rejane','Renee','Rita','Roberte','Robin','Rochelle','Rolande','Rosalie','Rosana','Rose','Roseline','Roselle','Roselyne','Rosemonde','Rosette','Rosine','Rosita','Rosy','Roxane','Roxanne','Rozenn','Sabine','Sabrina','Sacha','Salomé','Sandie','Sandra','Sandrine','Sandy','Sara','Sarah','Sébastienne','Segolene','Selma','Séraphine','Sergine','Servane','Severine','Sheila','Sibille','Sibylle','Sidoine','Sidonie','Sigolene','Simone','Sofia','Soizic','Solange','Soledad','Solenne','Soline','Sonia','Sophie','Stella','Stephanie','Suzanne','Suzel','Suzette','Suzon','Suzy','Svetlana','Sybil','Sybille','Sylvaine','Sylvette','Sylvia','Sylviane','Sylvianne','Sylvie','Tabatha','Tamara','Tania','Tara','Tatiana','Tatienne','Teresa','Tessa','Theophane','Therese','Tiphaine','Toinette','Toussainte','Urielle','Ursula','Ursule','Valentine','Valerie','Vanessa','Vanina','Vera','Verane','Veronique','Vickie','Victoire','Victorine','Vinciane','Violaine','Violette','Virginie','Viridiana','Viviane','Vivien','Vivienne','Weena','Wendy','Xaviere','Yanick','Yannic','Yannick','Yolaine','Yolande','Ysaline','Yvette','Yvonne','Zelie','Zéphyrine','Zita','Zoe'];
@@ -62,7 +66,6 @@ angular.module('choisirUnPrenomApp')
 			prenomsARetourner = $window._.shuffle(prenomsARetourner);
 
 			// on retourne
-			prenomsARetourner = prenomsARetourner.length > nbPrenom ? prenomsARetourner.slice(0, nbPrenom - 1) : prenomsARetourner;
 			return prenomsARetourner;
 		};
 	}])
