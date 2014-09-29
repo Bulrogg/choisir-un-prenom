@@ -2,7 +2,7 @@
 
 angular.module('choisirUnPrenomApp')
 
-	.controller('choisirUnPrenomCtrl', ['$scope', 'donneMoiDesPrenoms' ,function ($scope, donneMoiDesPrenoms) {
+	.controller('choisirUnPrenomCtrl', ['$scope', '$window', 'donneMoiDesPrenoms' ,function ($scope, $window, donneMoiDesPrenoms) {
 
 		$scope.nom = 'Millard';
 		$scope.sexe = 'FILLE';
@@ -29,19 +29,25 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomPropose = $scope.prenomAProposer.pop();
 		};
 
-		// Brancher gauche / droite pour les boutons
+		// TODO Brancher gauche / droite pour les boutons
+		// TODO supprimer la taille de chargement de la liste de prénoms
 		// TODO supprimer les doublons au moment du changement de prénoms
 		// TODO pouvoir sauvegarder les listes oui et non
 		// TODO pouvoir sauvegarder les options
 		// TODO réinitialiser la liste des prénoms au moment du changement de sexe
 		// TODO ajouter un lien vers le site prenoms.com
+		// TODO permettre d'ajouter un prénom directement dans la liste avec autocompletion
+		// TODO permettre de cliquer sur un prénom de la liste (rejete ou accepte) pour la recharger dans le trieur
+		// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
+		// TODO ne pas proposer des prénoms de la liste accepté / rejeté
+		// TODO gérer le cas ou la liste des prénoms est vide
 
 		$scope.changerDePrenom();
 
 	}])
 
 
-	.factory('donneMoiDesPrenoms', function() {
+	.factory('donneMoiDesPrenoms', ['$window', function($window) {
 		return function(sexe, nbPrenom) {			
 			// tous les prenoms disponibles
 			// TODO sortir les prenoms dans une constante
@@ -53,11 +59,11 @@ angular.module('choisirUnPrenomApp')
 			var prenomsARetourner = (sexe === 'FILLE') ? tousLesPrenomsFilles : (sexe === 'GARCON') ? tousLesPrenomsGarcons : tousLesPrenomsFilles.concat(tousLesPrenomsGarcons);
 
 			// on mélange
-			prenomsARetourner = _.shuffle(prenomsARetourner);
+			prenomsARetourner = $window._.shuffle(prenomsARetourner);
 
 			// on retourne
 			prenomsARetourner = prenomsARetourner.length > nbPrenom ? prenomsARetourner.slice(0, nbPrenom - 1) : prenomsARetourner;
 			return prenomsARetourner;
 		};
-	})
+	}])
 ;
