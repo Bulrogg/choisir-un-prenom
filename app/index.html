@@ -94,7 +94,7 @@
                     </span>
                   </div>
                 </form>
-                
+
               </div>
             </div>
           </div>
@@ -104,6 +104,28 @@
               <div class="panel-body">
                 <span ng-if="listeDesPrenomsRejetes.length > 20">... | </span>
                 <span ng-repeat="prenom in listeDesPrenomsRejetes | limitTo:-20"><a ng-click="rechargerPrenomRejete(prenom)">{{prenom}} | </a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reinitialisationModal">
+          Launch demo modal
+        </button>
+
+        <div class="modal fade" id="reinitialisationModal" tabindex="-1" role="dialog" aria-labelledby="Reinitialisation" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annuler</span></button>
+                <h4 class="modal-title" id="myModalLabel">Réinitialiser le tri ?</h4>
+              </div>
+              <div class="modal-body">
+                Voulez-vous vraiment tout réinitialiser et recommencer à zéro ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reinitialiserLeTri()">Oui, je veux tout réinitialiser</button>
               </div>
             </div>
           </div>
