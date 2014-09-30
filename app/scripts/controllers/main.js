@@ -8,6 +8,7 @@
 
 // TODO remplacer alerts par des modals
 // TODO travailler l'ergonomie
+// TODO rose si fille / bleu si garcon / terre si mixte
 
 // TODO externaliser l'url du site des prenoms dans les properties
 // TODO sortir les plistes de renoms dans une constante
