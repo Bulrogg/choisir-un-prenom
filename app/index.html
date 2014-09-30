@@ -85,6 +85,16 @@
               <div class="panel-body">
                 <span ng-if="listeDesPrenomsGardes.length > 20">... | </span>
                 <span ng-repeat="prenom in listeDesPrenomsGardes | limitTo:-20"><a ng-click="rechargerPrenomGarde(prenom)">{{prenom}} | </a></span>
+
+                <form ng-submit="ajouterUnPrenomAGarder()">
+                  <div class="input-group">
+                    <input type="text" ng-model="prenomGardeAAjouter" typeahead="state for state in prenomAProposer | filter:$viewValue | limitTo:4" class="form-control"/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" ng-click="ajouterUnPrenomAGarder()"><span class="glyphicon glyphicon-plus"></span></button>
+                    </span>
+                  </div>
+                </form>
+                
               </div>
             </div>
           </div>
@@ -123,6 +133,7 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -9,4 +9,4 @@
  * Main module of the application.
  */
 angular
-  .module('choisirUnPrenomApp', []);
+  .module('choisirUnPrenomApp', ['ui.bootstrap']);
