@@ -1,7 +1,6 @@
 'use strict';
 
 // TODO permettre d'ajouter un prénom directement dans la liste avec autocompletion
-// TODO afficher que les 20 derniers éléments des listes acceptés et rejeté
 
 // TODO ajouter de la persistence local storage
 // TODO Ajouter un bouton pour réinitialiser le local storage
