@@ -15,121 +15,18 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body ng-app="choisirUnPrenomApp">
+<body >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
 
       <!-- Add your site or application content here -->
-      <div class="container" ng-controller="choisirUnPrenomCtrl">
+      <div class="container">
 
-        <div class="panel panel-default">
-          <div class="panel-heading">Choix des prénoms en entrée</div>
-          <div class="panel-body">
-            <form role="form">
-
-              <div class="form-group">
-                <label for="nom" class="col-xs-2 control-label">Nom</label>
-                <div class="col-xs-10">
-                  <input id="nom" type="nom" class="form-control" placeholder="Quel sera le futur nom de famille de l'enfant ?" ng-model="nom">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="sexe" class="col-xs-2 control-label">Sexe</label>
-                <div class="col-xs-10">
-                  <label class="radio-inline">
-                    <input id="sexe-fille" type="radio" name="sexe" value="FILLE" ng-model="sexe"> Fille
-                  </label>
-                  <label class="radio-inline">
-                    <input id="sexe-garcon" type="radio" name="sexe" value="GARCON" ng-model="sexe"> Garçon
-                  </label>
-                  <label class="radio-inline">
-                    <input id="sexe-peu-importe" type="radio" name="sexe" value="PEU_IMPORTE" ng-model="sexe"> Peu importe
-                  </label>
-                </div>
-              </div>
-              
-            </form>
-          </div>
-        </div>
-
-        <div class="panel panel-default oui-ou-non">
-          <div class="panel-heading">Alors ? Oui ou Non ?</div>
-          <div class="panel-body">
-
-            <div ng-show="prenomPropose">
-              <div class="row">
-                <div class="col-xs-12">
-                  <span class="prenom">{{prenomPropose}}</span>
-                  <span class="nom">{{nom}}</span>
-                  <a href="{{prenomProposeUrlInfo}}" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a>
-                </div>
-              </div>
-              <div class="btn-group btn-group-justified">
-                <a class="btn btn-success" role="button" ng-click="onGarde()">On garde !</a>    
-                <a class="btn btn-danger" role="button" ng-click="poubelle()">Poubelle</a>
-              </div>
-            </div>
-            <div ng-hide="prenomPropose">
-              Plus de prénoms à proposer
-            </div>
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Les prénoms gardés</div>
-              <div class="panel-body">
-                <span ng-if="listeDesPrenomsGardes.length > 20">... | </span>
-                <span ng-repeat="prenom in listeDesPrenomsGardes | limitTo:-20"><a ng-click="rechargerPrenomGarde(prenom)">{{prenom}} | </a></span>
-
-                <form ng-submit="ajouterUnPrenomAGarder()">
-                  <div class="input-group">
-                    <input type="text" ng-model="prenomGardeAAjouter" typeahead="state for state in prenomAProposer | filter:$viewValue | limitTo:4" class="form-control"/>
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" ng-click="ajouterUnPrenomAGarder()"><span class="glyphicon glyphicon-plus"></span></button>
-                    </span>
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Les prénoms rejetés</div>
-              <div class="panel-body">
-                <span ng-if="listeDesPrenomsRejetes.length > 20">... | </span>
-                <span ng-repeat="prenom in listeDesPrenomsRejetes | limitTo:-20"><a ng-click="rechargerPrenomRejete(prenom)">{{prenom}} | </a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reinitialisationModal">
-          Réinitialiser
-        </button>
-
-        <div class="modal fade" id="reinitialisationModal" tabindex="-1" role="dialog" aria-labelledby="Reinitialisation" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annuler</span></button>
-                <h4 class="modal-title" id="myModalLabel">Réinitialiser le tri ?</h4>
-              </div>
-              <div class="modal-body">
-                Voulez-vous vraiment tout réinitialiser et recommencer à zéro ?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reinitialiserLeTri()">Oui, je veux tout réinitialiser</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+  <a type="button" class="btn btn-primary btn-lg" href="index-big-device.html">Gros écran</a>
+  <a type="button" class="btn btn-default btn-lg" href="index-small-device.html">Petit écran</a>
+</div>
 
       </div>
 
