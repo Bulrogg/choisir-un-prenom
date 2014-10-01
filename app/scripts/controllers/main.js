@@ -1,5 +1,8 @@
 'use strict';
 
+// TODO ajouter raccourci clavier
+// TODO permettre d'ajouter des prenoms manuellement qui sont dans la liste uniquement
+
 // TODO remplacer alerts par des modals
 // TODO travailler l'ergonomie
 // TODO rose si fille / bleu si garcon / terre si mixte
