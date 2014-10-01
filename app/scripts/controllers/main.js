@@ -10,6 +10,8 @@
 // TODO externaliser l'url du site des prenoms dans les properties
 // TODO sortir les listes de renoms dans une constante
 
+// TODO l'ajout d'un prénom ne doit pas etre vide
+
 angular.module('choisirUnPrenomApp')
 
 	.controller('choisirUnPrenomCtrl', ['$scope', '$window', 'donneMoiDesPrenoms' ,function ($scope, $window, donneMoiDesPrenoms) {
