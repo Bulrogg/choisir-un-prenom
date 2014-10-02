@@ -37,6 +37,8 @@
 
         <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
 
+          <h3>Faites votre choix !</h3>
+
           <div class="row parametres">
             <div class="form-group">
               <label for="nom" class="col-xs-2 control-label">Nom</label>
@@ -68,92 +70,107 @@
               <a href="{{prenomProposeUrlInfo}}" target="_blank" ><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
             <div class="col-xs-12" ng-show="! prenomPropose">
-               <span>Plus de prénoms à proposer</span>
-            </div>
-          </div>
+             <span>Plus de prénoms à proposer</span>
+           </div>
+         </div>
 
-          <hr>
+         <hr>
 
-          <div class="row actions">
-            <div class="col-xs-12">
-              <div class="btn-group btn-group-lg btn-group-justified">
-                <a class="btn btn-default" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
-                <a class="btn btn-default" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="onglet-des-prenoms-ok" ng-show="ongletEnCours === 'OK'">
-
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">Les prénoms gardés</div>
-                <div class="panel-body">
-                  <span ng-if="listeDesPrenomsGardes.length > 20">... | </span>
-                  <span ng-repeat="prenom in listeDesPrenomsGardes | limitTo:-20"><a ng-click="rechargerPrenomGarde(prenom)">{{prenom}} | </a></span>
-
-                  <form ng-submit="ajouterUnPrenomAGarder()">
-                    <div class="input-group">
-                      <input type="text" ng-model="prenomGardeAAjouter" typeahead="state for state in prenomAProposer | filter:$viewValue | limitTo:4" class="form-control"/>
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="ajouterUnPrenomAGarder()"><span class="glyphicon glyphicon-plus"></span></button>
-                      </span>
-                    </div>
-                  </form>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">Les prénoms rejetés</div>
-                <div class="panel-body">
-                  <span ng-if="listeDesPrenomsRejetes.length > 20">... | </span>
-                  <span ng-repeat="prenom in listeDesPrenomsRejetes | limitTo:-20"><a ng-click="rechargerPrenomRejete(prenom)">{{prenom}} | </a></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="onglet-des-prenoms-ko" ng-show="ongletEnCours === 'KO'">
-
-        </div>
-
-        <div class="modal fade" id="reinitialisationModal" tabindex="-1" role="dialog" aria-labelledby="Reinitialisation" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annuler</span></button>
-                <h4 class="modal-title" id="myModalLabel">Réinitialiser le tri ?</h4>
-              </div>
-              <div class="modal-body">
-                Voulez-vous vraiment tout réinitialiser et recommencer à zéro ?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reinitialiserLeTri()">Oui, je veux tout réinitialiser</button>
-              </div>
+         <div class="row actions">
+          <div class="col-xs-12">
+            <div class="btn-group btn-group-lg btn-group-justified">
+              <a class="btn btn-default" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
+              <a class="btn btn-default" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-      <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-55276208-1', 'auto');
-      ga('send', 'pageview');
-      </script>
+      <div class="onglet-des-prenoms-ok" ng-show="ongletEnCours === 'OK'">
+
+        <h3>Les prénoms gardés</h3>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-striped">
+              <tr ng-repeat="prenom in listeDesPrenomsGardes">
+                <td>{{prenom}}</td>  
+                <td ng-click="passerLePrenomDeGardeARejete()"><a class="glyphicon glyphicon-thumbs-down"></a></td>
+                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <form ng-submit="ajouterUnPrenomAGarder()">
+          <div class="input-group">
+            <input type="text" ng-model="prenomGardeAAjouter" typeahead="state for state in prenomAProposer | filter:$viewValue | limitTo:4" class="form-control" placeholder="Déjà un prénom en tête ?"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="ajouterUnPrenomAGarder()"><span class="glyphicon glyphicon-plus"></span></button>
+            </span>
+          </div>
+        </form>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="btn-group btn-group-lg btn-group-justified">
+              <a class="btn btn-default btn-lg" type="button" ng-click="alert('todo')"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+              <a class="btn btn-default btn-lg" type="button" ng-click="alert('todo')"><span class="glyphicon glyphicon-share-alt"></span></a>
+            </div>            
+          </div>
+        </div>
+
+      </div>
+
+      <div class="onglet-des-prenoms-ko" ng-show="ongletEnCours === 'KO'">
+
+        <h3>Les prénoms rejetés</h3>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-striped">
+              <tr ng-repeat="prenom in listeDesPrenomsRejetes">
+                <td>{{prenom}}</td>  
+                <td ng-click="passerLePrenomDeRejeteAGarde()"><a class="glyphicon glyphicon-thumbs-up"></a></td>
+                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="reinitialisationModal" tabindex="-1" role="dialog" aria-labelledby="Reinitialisation" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annuler</span></button>
+              <h4 class="modal-title" id="myModalLabel">Réinitialiser le tri ?</h4>
+            </div>
+            <div class="modal-body">
+              Voulez-vous vraiment tout réinitialiser et recommencer à zéro ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reinitialiserLeTri()">Oui, je veux tout réinitialiser</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-55276208-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>

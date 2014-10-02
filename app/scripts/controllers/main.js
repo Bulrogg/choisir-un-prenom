@@ -46,10 +46,20 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
 		};
 
+		$scope.passerLePrenomDeRejeteAGarde = function() {
+			$window.alert("TODO : passerLePrenomDeRejeteAGarde");
+		};
+
+		$scope.passerLePrenomDeGardeARejete = function() {
+			$window.alert("TODO : passerLePrenomDeGardeARejete");	
+		};
+		
+		// DEPRECATED
 		$scope.rechargerPrenomGarde = function(prenomARecharger) {
 			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsGardes', prenomARecharger);
 		};
 
+		// DEPRECATED
 		$scope.rechargerPrenomRejete = function(prenomARecharger) {
 			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsRejetes', prenomARecharger);
 		};
