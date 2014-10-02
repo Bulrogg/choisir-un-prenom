@@ -1,16 +1,15 @@
 'use strict';
 
 // TODO ajouter raccourci clavier
+
 // TODO permettre d'ajouter des prenoms manuellement qui sont dans la liste uniquement
+// TODO l'ajout d'un prénom ne doit pas etre vide
 
 // TODO remplacer alerts par des modals
-// TODO travailler l'ergonomie
-// TODO rose si fille / bleu si garcon / terre si mixte
+// TODO rose si fille / bleu si garcon
 
 // TODO externaliser l'url du site des prenoms dans les properties
 // TODO sortir les listes de renoms dans une constante
-
-// TODO l'ajout d'un prénom ne doit pas etre vide
 
 // TODO faire clignoter les onglets des tabulations lors de l'ajout d'un prénom dans rejeté ou gardé
 
