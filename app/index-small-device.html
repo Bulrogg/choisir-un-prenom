@@ -40,34 +40,31 @@
         </div>
 
         <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
-          <h3>Faites votre choix !</h3>
           <div class="row parametres">
-            <div class="form-group">
-              <label for="nom" class="col-xs-2 control-label">Nom</label>
-              <div class="col-xs-10">
-                <input id="nom" type="nom" class="form-control" placeholder="le nom sera ?" ng-model="nom" autocomplete="off">
+            <form role="form">
+              <div class="form-group">
+                <label for="nom" class="col-xs-2 control-label">Nom</label>
+                <div class="col-xs-10">
+                  <input id="nom" type="nom" class="form-control" placeholder="Quel sera le futur nom de famille de l'enfant ?" ng-model="nom">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="sexe" class="col-xs-2 control-label">Sexe</label>
-              <div class="col-xs-10">
-                <label class="radio-inline">
-                  <input id="sexe-fille" type="radio" name="sexe" value="FILLE" ng-model="sexe"> Fille
-                </label>
-                <label class="radio-inline">
-                  <input id="sexe-garcon" type="radio" name="sexe" value="GARCON" ng-model="sexe"> Garçon
-                </label>
-                <label class="radio-inline">
-                  <input id="sexe-peu-importe" type="radio" name="sexe" value="PEU_IMPORTE" ng-model="sexe"> Peu importe
-                </label>
-              </div>
-            </div>
+              <div class="form-group">
+                <label for="sexe" class="control-label col-xs-2">Sexe</label>
+                <div class="btn-group btn-group-lg col-xs-10" data-toggle="buttons">
+                  <label class="btn btn-default" ng-class="sexe === 'FILLE' ? 'active' : ''" ng-click="sexe = 'FILLE'">
+                    <input type="radio" name="sexe">Fille
+                  </label>
+                  <label class="btn btn-default" ng-class="sexe === 'GARCON' ? 'active' : ''" ng-click="sexe = 'GARCON'">
+                    <input type="radio" name="sexe">Garçon
+                  </label>
+                </div>
+              </div>              
+            </form>
           </div>
-          <hr>
+          <hr/>
           <div class="row proposition">
             <div class="col-xs-12" ng-show="prenomPropose">
-              <span class="prenom" >{{prenomPropose}} {{nom}} </span>
-              <a href="{{prenomProposeUrlInfo}}" target="_blank" ><span class="glyphicon glyphicon-info-sign"></span></a>
+              <a href="{{prenomProposeUrlInfo}}" target="_blank" ><span class="prenom" >{{prenomPropose}} {{nom}} </span></a>
             </div>
             <div class="col-xs-12" ng-show="! prenomPropose">
              <span>Plus de prénoms à proposer</span>
@@ -77,8 +74,8 @@
          <div class="row actions">
           <div class="col-xs-12">
             <div class="btn-group btn-group-lg btn-group-justified">
-              <a class="btn btn-success" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
-              <a class="btn btn-danger" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+              <a class="btn btn-default" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
+              <a class="btn btn-default" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             </div>
           </div>
         </div>
