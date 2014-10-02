@@ -24,21 +24,23 @@
 
         <div class="header">
           <ul class="nav nav-tabs" role="tablist">
-            <li ng-class="ongletEnCours === 'TRI' ? 'active' : ''" ng-click="ongletEnCours = 'TRI'"><a><span class="glyphicon glyphicon-sort"></span></a></li>
-            <li ng-class="ongletEnCours === 'OK' ? 'active' : ''"><a href="#" ng-click="ongletEnCours = 'OK'"><span class="glyphicon glyphicon-thumbs-up"></span></a></li>
-            <li ng-class="ongletEnCours === 'KO' ? 'active' : ''"><a href="#" ng-click="ongletEnCours = 'KO'"><span class="glyphicon glyphicon-thumbs-down"></span></a></li>
-
-            <button class="btn btn-default pull-right" data-toggle="modal" data-target="#reinitialisationModal">
-              <span class="glyphicon glyphicon-refresh"></span>
-            </button>
-
+            <li ng-class="ongletEnCours === 'TRI' ? 'active' : ''" ng-click="ongletEnCours = 'TRI'">
+              <a><span class="glyphicon glyphicon-sort"></span></a>
+            </li>
+            <li ng-class="ongletEnCours === 'OK' ? 'active' : ''">
+              <a href="#" ng-click="ongletEnCours = 'OK'"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+            </li>
+            <li ng-class="ongletEnCours === 'KO' ? 'active' : ''">
+              <a href="#" ng-click="ongletEnCours = 'KO'"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+            </li>
+            <li ng-class="ongletEnCours === 'TOOLS' ? 'active' : ''" class="pull-right">
+              <a href="#" ng-click="ongletEnCours = 'TOOLS'"><span class="glyphicon glyphicon-wrench"></span></a>
+            </li>
           </ul>
         </div>
 
         <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
-
           <h3>Faites votre choix !</h3>
-
           <div class="row parametres">
             <div class="form-group">
               <label for="nom" class="col-xs-2 control-label">Nom</label>
@@ -61,9 +63,7 @@
               </div>
             </div>
           </div>
-
           <hr>
-
           <div class="row proposition">
             <div class="col-xs-12" ng-show="prenomPropose">
               <span class="prenom" >{{prenomPropose}} {{nom}} </span>
@@ -73,9 +73,7 @@
              <span>Plus de prénoms à proposer</span>
            </div>
          </div>
-
          <hr>
-
          <div class="row actions">
           <div class="col-xs-12">
             <div class="btn-group btn-group-lg btn-group-justified">
@@ -84,13 +82,10 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="onglet-des-prenoms-ok" ng-show="ongletEnCours === 'OK'">
-
         <h3>Les prénoms gardés</h3>
-
         <div class="row">
           <div class="col-xs-12">
             <table class="table table-striped">
@@ -102,7 +97,6 @@
             </table>
           </div>
         </div>
-
         <form ng-submit="ajouterUnPrenomAGarder()">
           <div class="input-group">
             <input type="text" ng-model="prenomGardeAAjouter" typeahead="state for state in prenomAProposer | filter:$viewValue | limitTo:4" class="form-control" placeholder="Déjà un prénom en tête ?"/>
@@ -111,24 +105,10 @@
             </span>
           </div>
         </form>
-
-        <hr>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="btn-group btn-group-lg btn-group-justified">
-              <a class="btn btn-default btn-lg" type="button" ng-click="alert('todo')"><span class="glyphicon glyphicon-floppy-disk"></span></a>
-              <a class="btn btn-default btn-lg" type="button" ng-click="alert('todo')"><span class="glyphicon glyphicon-share-alt"></span></a>
-            </div>            
-          </div>
-        </div>
-
       </div>
 
       <div class="onglet-des-prenoms-ko" ng-show="ongletEnCours === 'KO'">
-
         <h3>Les prénoms rejetés</h3>
-
         <div class="row">
           <div class="col-xs-12">
             <table class="table table-striped">
@@ -138,6 +118,27 @@
                 <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
               </tr>
             </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="onglet-des-prenoms-tools" ng-show="ongletEnCours === 'TOOLS'">
+        <h3>Boite à outils</h3>
+        <div class="row">
+          <div class="col-xs-12">
+              <a class="btn btn-lg btn-default btn-block" type="button" data-toggle="modal" data-target="#reinitialisationModal">
+                <span class="glyphicon glyphicon-refresh"></span> Tout réinitialiser
+              </a>
+              <a class="btn btn-lg btn-default btn-block" type="button" ng-click="alert('todo')">
+                <span class="glyphicon glyphicon-floppy-disk"></span> Exporter
+              </a>
+              <a class="btn btn-lg btn-default btn-block" type="button" ng-click="alert('todo')">
+                <span class="glyphicon glyphicon-share-alt"></span> Partager
+              </a>
+          </div>
+        </div>
+
+            </div>            
           </div>
         </div>
       </div>
