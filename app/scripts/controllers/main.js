@@ -1,9 +1,8 @@
 'use strict';
 
-// TODO ajouter raccourci clavier
-
 // TODO remplacer alerts par des modals
 // TODO rose si fille / bleu si garcon
+// TODO faire clignoter les onglets ok / ko
 
 // TODO externaliser l'url du site des prenoms dans les properties
 // TODO sortir les listes de renoms dans une constante
