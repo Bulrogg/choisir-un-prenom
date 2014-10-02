@@ -57,16 +57,6 @@ angular.module('choisirUnPrenomApp')
 			$scope.listeDesPrenomsGardes = $window._.without($scope.listeDesPrenomsGardes, prenomADeplacer);
 			$scope.listeDesPrenomsRejetes.push(prenomADeplacer);
 		};
-		
-		// DEPRECATED
-		$scope.rechargerPrenomGarde = function(prenomARecharger) {
-			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsGardes', prenomARecharger);
-		};
-
-		// DEPRECATED
-		$scope.rechargerPrenomRejete = function(prenomARecharger) {
-			$scope.rechargerPrenomDepuisLaListe('listeDesPrenomsRejetes', prenomARecharger);
-		};
 
 		$scope.rechargerPrenomDepuisLaListe = function(listePrenomsSource, prenomARecharger) {
 			$scope[listePrenomsSource] = $window._.without($scope[listePrenomsSource], prenomARecharger);
