@@ -8,10 +8,6 @@
 // TODO externaliser l'url du site des prenoms dans les properties
 // TODO sortir les listes de renoms dans une constante
 
-// TODO faire clignoter les onglets des tabulations lors de l'ajout d'un prénom dans rejeté ou gardé
-
-// TODO pouvoir ordonner la liste des prénoms sélectionnés
-
 angular.module('choisirUnPrenomApp')
 
 	.controller('choisirUnPrenomCtrl', ['$scope', '$window', 'donneMoiDesPrenoms' ,function ($scope, $window, donneMoiDesPrenoms) {
@@ -61,15 +57,12 @@ angular.module('choisirUnPrenomApp')
 		};
 
 		$scope.reinitialiserSystemePropositionPrenom = function() {
-			// Récupération de tous les prénoms
 			$scope.chargerListePrenomsAProposer();
 
-			// Suppression des prénoms déjà rencontrés
 			var prenomsDejaRencontres = $scope.listeDesPrenomsGardes.concat($scope.listeDesPrenomsRejetes);
 			$scope.prenomAProposer = $window._.difference($scope.prenomAProposer, prenomsDejaRencontres);
 			$scope.prenomAProposer = $window._.uniq($scope.prenomAProposer);
 
-			// Proposition d'un nouveau prénoms
 			$scope.chargerLePrenomAProposerSuivant();
 		};
 
@@ -123,14 +116,24 @@ angular.module('choisirUnPrenomApp')
 			$scope.ongletEnCours = 'TRI';
 		};
 
+		$scope.descendreLePrenomAGarder = function(indexDansLaListe) {
+			$scope.listeDesPrenomsGardes.swap(indexDansLaListe, indexDansLaListe + 1);
+			$scope.persisterDansLeLocalStorage();
+		};
+
+		$scope.monterLePrenomAGarder = function(indexDansLaListe) {
+			$scope.listeDesPrenomsGardes.swap(indexDansLaListe, indexDansLaListe - 1);
+			$scope.persisterDansLeLocalStorage();
+		};
+
 		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);
+
+		$scope.chargerDepuisLeLocalStorage();
+		$scope.reinitialiserSystemePropositionPrenom();
 
 		if(typeof($window.Storage) === 'undefined') {
 			$window.alert('Votre navigateur ne permet pas de sauvegarder. Tout sera perdu à la fermeture de la page :-s');
 		}
-
-		$scope.chargerDepuisLeLocalStorage();
-		$scope.reinitialiserSystemePropositionPrenom();
 
 	}])
 
