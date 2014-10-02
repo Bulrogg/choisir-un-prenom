@@ -64,7 +64,7 @@
           <hr/>
           <div class="row proposition">
             <div class="col-xs-12" ng-show="prenomPropose">
-              <a href="{{prenomProposeUrlInfo}}" target="_blank" ><span class="prenom" >{{prenomPropose}} {{nom}} </span></a>
+              <a href="{{prenomPropose | urlVersInfoPrenom}}" target="_blank" ><span class="prenom" >{{prenomPropose}} {{nom}} </span></a>
             </div>
             <div class="col-xs-12" ng-show="! prenomPropose">
              <span>Plus de prénoms à proposer</span>
@@ -89,7 +89,7 @@
               <tr ng-repeat="prenom in listeDesPrenomsGardes">
                 <td>{{prenom}}</td>  
                 <td ng-click="passerLePrenomDeGardeARejete(prenom)"><a class="glyphicon glyphicon-thumbs-down"></a></td>
-                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
+                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
               </tr>
             </table>
           </div>
@@ -112,7 +112,7 @@
               <tr ng-repeat="prenom in listeDesPrenomsRejetes">
                 <td>{{prenom}}</td>  
                 <td ng-click="passerLePrenomDeRejeteAGarde(prenom)"><a class="glyphicon glyphicon-thumbs-up"></a></td>
-                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
+                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
               </tr>
             </table>
           </div>

@@ -23,7 +23,6 @@ angular.module('choisirUnPrenomApp')
 		$scope.nom = '';
 		$scope.sexe = '';
 		$scope.prenomPropose = '';
-		$scope.prenomProposeUrlInfo = '';
 		$scope.listeDesPrenomsGardes = [];
 		$scope.listeDesPrenomsRejetes = [];
 		$scope.prenomAProposer = [];
@@ -42,8 +41,6 @@ angular.module('choisirUnPrenomApp')
 		$scope.chargerLePrenomAProposerSuivant = function () {
 			var nouveauPrenomAProposer = $scope.prenomAProposer.pop();
 			$scope.prenomPropose = nouveauPrenomAProposer;
-			var prenomPourUrl = nouveauPrenomAProposer ? nouveauPrenomAProposer.sansAccent().toUpperCase() : '';
-			$scope.prenomProposeUrlInfo = nouveauPrenomAProposer ? 'http://www.prenoms.com/prenom/'+prenomPourUrl+'.html' : '';
 			$scope.persisterDansLeLocalStorage();
 		};
 
@@ -154,4 +151,10 @@ angular.module('choisirUnPrenomApp')
 			return $window._.shuffle(prenomsARetourner);
 		};
 	}])
+
+	.filter('urlVersInfoPrenom', function() {
+		return function(prenom) {
+  			return prenom ? 'http://www.prenoms.com/prenom/'+prenom.sansAccent().toUpperCase()+'.html' : '';
+		};
+	})
 ;
