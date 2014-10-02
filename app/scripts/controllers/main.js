@@ -2,9 +2,6 @@
 
 // TODO ajouter raccourci clavier
 
-// TODO permettre d'ajouter des prenoms manuellement qui sont dans la liste uniquement
-// TODO l'ajout d'un prénom ne doit pas etre vide
-
 // TODO remplacer alerts par des modals
 // TODO rose si fille / bleu si garcon
 
@@ -77,9 +74,14 @@ angular.module('choisirUnPrenomApp')
 		};
 
 		$scope.ajouterUnPrenomAGarder = function() {
-			$scope.listeDesPrenomsGardes.push($scope.prenomGardeAAjouter);
-			$scope.reinitialiserSystemePropositionPrenom();
-			$scope.prenomGardeAAjouter = '';
+			if($scope.prenomGardeAAjouter) {
+				$scope.listeDesPrenomsGardes.push($scope.prenomGardeAAjouter);
+				$scope.reinitialiserSystemePropositionPrenom();
+				$scope.prenomGardeAAjouter = '';
+			}
+			else {
+				$window.alert('Le prénom à ajouter ne peut pas être vide');
+			}
 		};
 
 		$scope.persisterDansLeLocalStorage = function() {
