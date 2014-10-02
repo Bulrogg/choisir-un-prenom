@@ -94,7 +94,7 @@ angular.module('choisirUnPrenomApp')
 				var sexeStorage = $window.localStorage.getItem('sexe');
 				var listeDesPrenomsGardesStorage = JSON.parse($window.localStorage.getItem('listeDesPrenomsGardes'));
 				var listeDesPrenomsRejetesStorage = JSON.parse($window.localStorage.getItem('listeDesPrenomsRejetes'));
-				$scope.nom = nomStorage ? nomStorage : 'Smith';
+				$scope.nom = nomStorage ? nomStorage : '';
 				$scope.sexe = sexeStorage ? sexeStorage : 'FILLE';
 				$scope.listeDesPrenomsGardes = listeDesPrenomsGardesStorage ? listeDesPrenomsGardesStorage : [];
 				$scope.listeDesPrenomsRejetes = listeDesPrenomsRejetesStorage ? listeDesPrenomsRejetesStorage : [];
@@ -102,7 +102,7 @@ angular.module('choisirUnPrenomApp')
 		};
 
 		$scope.reinitialiserLeTri = function() {
-			$scope.nom = 'Smith';
+			$scope.nom = '';
 			$scope.sexe = 'FILLE';
 			$scope.listeDesPrenomsGardes = [];
 			$scope.listeDesPrenomsRejetes = [];
