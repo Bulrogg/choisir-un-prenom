@@ -12,6 +12,10 @@
 
 // TODO l'ajout d'un prénom ne doit pas etre vide
 
+// TODO faire clignoter les onglets des tabulations lors de l'ajout d'un prénom dans rejeté ou gardé
+
+// TODO pouvoir ordonner la liste des prénoms sélectionnés
+
 angular.module('choisirUnPrenomApp')
 
 	.controller('choisirUnPrenomCtrl', ['$scope', '$window', 'donneMoiDesPrenoms' ,function ($scope, $window, donneMoiDesPrenoms) {
@@ -23,6 +27,7 @@ angular.module('choisirUnPrenomApp')
 		$scope.listeDesPrenomsGardes = [];
 		$scope.listeDesPrenomsRejetes = [];
 		$scope.prenomAProposer = [];
+		$scope.ongletEnCours = 'TRI';
 
 		$scope.onGarde = function() {
 			$scope.listeDesPrenomsGardes.push($scope.prenomPropose);
@@ -46,12 +51,14 @@ angular.module('choisirUnPrenomApp')
 			$scope.prenomAProposer = donneMoiDesPrenoms($scope.sexe);
 		};
 
-		$scope.passerLePrenomDeRejeteAGarde = function() {
-			$window.alert("TODO : passerLePrenomDeRejeteAGarde");
+		$scope.passerLePrenomDeRejeteAGarde = function (prenomADeplacer) {
+			$scope.listeDesPrenomsRejetes = $window._.without($scope.listeDesPrenomsRejetes, prenomADeplacer);
+			$scope.listeDesPrenomsGardes.push(prenomADeplacer);
 		};
 
-		$scope.passerLePrenomDeGardeARejete = function() {
-			$window.alert("TODO : passerLePrenomDeGardeARejete");	
+		$scope.passerLePrenomDeGardeARejete = function(prenomADeplacer) {
+			$scope.listeDesPrenomsGardes = $window._.without($scope.listeDesPrenomsGardes, prenomADeplacer);
+			$scope.listeDesPrenomsRejetes.push(prenomADeplacer);
 		};
 		
 		// DEPRECATED
@@ -111,12 +118,21 @@ angular.module('choisirUnPrenomApp')
 			}
 		};
 
-		$scope.reinitialiserLeTri = function() {
+		$scope.exporter = function() {
+			$window.alert('Fonctionnalité pas encore disponible');
+		};
+
+		$scope.partager = function() {
+			$window.alert('Fonctionnalité pas encore disponible');
+		};
+
+		$scope.toutReinitialiser = function() {
 			$scope.nom = '';
 			$scope.sexe = 'FILLE';
 			$scope.listeDesPrenomsGardes = [];
 			$scope.listeDesPrenomsRejetes = [];
 			$scope.reinitialiserSystemePropositionPrenom();
+			$scope.ongletEnCours = 'TRI';
 		};
 
 		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);

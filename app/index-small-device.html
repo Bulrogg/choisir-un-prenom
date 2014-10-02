@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body ng-app="choisirUnPrenomApp" class="small-device" ng-controller="choisirUnPrenomCtrl" ng-init="ongletEnCours = 'TRI'">
+<body ng-app="choisirUnPrenomApp" class="small-device" ng-controller="choisirUnPrenomCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
@@ -77,8 +77,8 @@
          <div class="row actions">
           <div class="col-xs-12">
             <div class="btn-group btn-group-lg btn-group-justified">
-              <a class="btn btn-default" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
-              <a class="btn btn-default" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+              <a class="btn btn-success" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
+              <a class="btn btn-danger" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
             <table class="table table-striped">
               <tr ng-repeat="prenom in listeDesPrenomsGardes">
                 <td>{{prenom}}</td>  
-                <td ng-click="passerLePrenomDeGardeARejete()"><a class="glyphicon glyphicon-thumbs-down"></a></td>
+                <td ng-click="passerLePrenomDeGardeARejete(prenom)"><a class="glyphicon glyphicon-thumbs-down"></a></td>
                 <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
               </tr>
             </table>
@@ -114,7 +114,7 @@
             <table class="table table-striped">
               <tr ng-repeat="prenom in listeDesPrenomsRejetes">
                 <td>{{prenom}}</td>  
-                <td ng-click="passerLePrenomDeRejeteAGarde()"><a class="glyphicon glyphicon-thumbs-up"></a></td>
+                <td ng-click="passerLePrenomDeRejeteAGarde(prenom)"><a class="glyphicon glyphicon-thumbs-up"></a></td>
                 <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="todo"></a></td>
               </tr>
             </table>
@@ -126,22 +126,18 @@
         <h3>Boite à outils</h3>
         <div class="row">
           <div class="col-xs-12">
-              <a class="btn btn-lg btn-default btn-block" type="button" data-toggle="modal" data-target="#reinitialisationModal">
-                <span class="glyphicon glyphicon-refresh"></span> Tout réinitialiser
-              </a>
-              <a class="btn btn-lg btn-default btn-block" type="button" ng-click="alert('todo')">
-                <span class="glyphicon glyphicon-floppy-disk"></span> Exporter
-              </a>
-              <a class="btn btn-lg btn-default btn-block" type="button" ng-click="alert('todo')">
-                <span class="glyphicon glyphicon-share-alt"></span> Partager
-              </a>
+            <a class="btn btn-lg btn-default btn-block" type="button" data-toggle="modal" data-target="#reinitialisationModal">
+              <span class="glyphicon glyphicon-refresh"></span> Tout réinitialiser
+            </a>
+            <a class="btn btn-lg btn-default btn-block" type="button" ng-click="exporter()">
+              <span class="glyphicon glyphicon-floppy-disk"></span> Exporter
+            </a>
+            <a class="btn btn-lg btn-default btn-block" type="button" ng-click="partager()">
+              <span class="glyphicon glyphicon-share-alt"></span> Partager
+            </a>
           </div>
         </div>
-
-            </div>            
-          </div>
-        </div>
-      </div>
+      </div>  
 
       <div class="modal fade" id="reinitialisationModal" tabindex="-1" role="dialog" aria-labelledby="Reinitialisation" aria-hidden="true">
         <div class="modal-dialog">
@@ -155,7 +151,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reinitialiserLeTri()">Oui, je veux tout réinitialiser</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="toutReinitialiser()">Oui, je veux tout réinitialiser</button>
             </div>
           </div>
         </div>
