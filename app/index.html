@@ -24,6 +24,9 @@
 
         <div class="header">
           <ul class="nav nav-tabs" role="tablist">
+            <li ng-class="ongletEnCours === 'CONFIG' ? 'active' : ''" ng-click="ongletEnCours = 'CONFIG'">
+              <a><span class="glyphicon glyphicon-wrench"></span></a>
+            </li>
             <li ng-class="ongletEnCours === 'TRI' ? 'active' : ''" ng-click="ongletEnCours = 'TRI'">
               <a><span class="glyphicon glyphicon-sort"></span></a>
             </li>
@@ -39,7 +42,7 @@
           </ul>
         </div>
 
-        <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
+        <div class="onglet-de-tri" ng-show="ongletEnCours === 'CONFIG'">
           <div class="row parametres">
             <form role="form">
               <div class="form-group">
@@ -61,7 +64,9 @@
               </div>              
             </form>
           </div>
-          <hr/>
+        </div>
+
+        <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
           <div class="row proposition">
             <div class="col-xs-12" ng-show="prenomPropose">
               <a href="{{prenomPropose | urlVersInfoPrenom}}" target="_blank" ><span class="prenom" >{{prenomPropose}} {{nom}} </span></a>
@@ -70,7 +75,6 @@
              <span>Plus de prénoms à proposer</span>
            </div>
          </div>
-         <hr>
          <div class="row actions">
           <div class="col-xs-12">
             <div class="btn-group btn-group-lg btn-group-justified">
