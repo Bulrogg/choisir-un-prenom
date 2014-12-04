@@ -1,10 +1,12 @@
-.pour-fille {}
-
-.pour-garcon {}
-
-.pour-fille-ou-garcon {}
-
-
+.pour-fille a {
+	color: #DB4C84;
+}
+.pour-garcon a {
+	color: #2891BD;
+}
+.pour-fille-ou-garcon a {
+	color: #3E3D3D;
+}
 
 .onglet-de-config .radio-fille,
 .onglet-de-config .radio-garcon,
@@ -29,16 +31,18 @@
 }
 .onglet-de-tri .proposition {
   text-align: center;
-  font-size: 3em;
+  font-size: 45px;
   font-weight: bold;
 }
 .onglet-de-tri .actions {
 	margin-top: 15px;
 }
+
+.onglet-de-config h3,
+.onglet-de-tri h3,
 .onglet-des-prenoms-ok h3,
-onglet-des-prenoms-ko h3,
-onglet-des-prenoms-tools h3 {
+.onglet-des-prenoms-ko h3,
+.onglet-des-prenoms-tools h3 {
+	margin-top: 15px;
 	margin-bottom: 20px;
 }
-
-
