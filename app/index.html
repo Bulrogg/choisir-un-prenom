@@ -25,10 +25,10 @@
         <div class="header">
           <ul class="nav nav-tabs" role="tablist">
             <li ng-class="ongletEnCours === 'CONFIG' ? 'active' : ''" ng-click="ongletEnCours = 'CONFIG'">
-              <a><span class="glyphicon glyphicon-wrench"></span></a>
+              <a><span class="glyphicon glyphicon-home"></span></a>
             </li>
             <li ng-class="ongletEnCours === 'TRI' ? 'active' : ''" ng-click="ongletEnCours = 'TRI'">
-              <a><span class="glyphicon glyphicon-sort"></span></a>
+              <a><span class="glyphicon glyphicon-repeat"></span></a>
             </li>
             <li ng-class="ongletEnCours === 'OK' ? 'active' : ''">
               <a href="#" ng-click="ongletEnCours = 'OK'"><span class="glyphicon glyphicon-thumbs-up"></span></a>
@@ -37,36 +37,40 @@
               <a href="#" ng-click="ongletEnCours = 'KO'"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             </li>
             <li ng-class="ongletEnCours === 'TOOLS' ? 'active' : ''" class="pull-right">
-              <a href="#" ng-click="ongletEnCours = 'TOOLS'"><span class="glyphicon glyphicon-wrench"></span></a>
+              <a href="#" ng-click="ongletEnCours = 'TOOLS'"><span class="glyphicon glyphicon-cog"></span></a>
             </li>
           </ul>
         </div>
 
         <div class="onglet-de-tri" ng-show="ongletEnCours === 'CONFIG'">
+          <h3>Avant de commencer</h3>
           <div class="row parametres">
             <form role="form">
               <div class="form-group">
-                <label for="nom" class="col-xs-2 control-label">Nom</label>
-                <div class="col-xs-10">
-                  <input id="nom" type="nom" class="form-control" placeholder="Quel sera le futur nom de famille de l'enfant ?" ng-model="nom">
+                <label for="nom" class="col-xs-12 control-label">Le bébé aura pour nom</label>
+                <div class="col-xs-12">
+                  <input id="nom" type="nom" class="form-control" ng-model="nom">
                 </div>
               </div>
               <div class="form-group">
-                <label for="sexe" class="control-label col-xs-2">Sexe</label>
-                <div class="btn-group btn-group-lg col-xs-10" data-toggle="buttons">
-                  <label class="btn btn-default" ng-class="sexe === 'FILLE' ? 'active' : ''" ng-click="sexe = 'FILLE'">
-                    <input type="radio" name="sexe">Fille
-                  </label>
-                  <label class="btn btn-default" ng-class="sexe === 'GARCON' ? 'active' : ''" ng-click="sexe = 'GARCON'">
-                    <input type="radio" name="sexe">Garçon
-                  </label>
+                <label for="sexe" class="control-label col-xs-12">Et ça sera </label>
+                <div class="col-xs-12">
+                  <label><input type="radio" ng-model="sexe" value="FILLE">une fille</label>
+                  <label><input type="radio" ng-model="sexe" value="GARCON">un garçon</label>
+                  <label><input type="radio" ng-model="sexe" value="UN_DES_DEUX">l'un des deux</label>
                 </div>
-              </div>              
+              </div>
+              <div class="col-xs-12">
+                <div class="btn-group btn-group-lg btn-group-justified">
+                  <a class="btn btn-default" role="button" ng-click="ongletEnCours = 'TRI'">Go pour le tri</a>
+                </div>
+              </div>
             </form>
           </div>
         </div>
 
         <div class="onglet-de-tri" ng-show="ongletEnCours === 'TRI'">
+          <h3>Que penses-tu de</h3>
           <div class="row proposition">
             <div class="col-xs-12" ng-show="prenomPropose">
               <a href="{{prenomPropose | urlVersInfoPrenom}}" target="_blank" ><span class="prenom" >{{prenomPropose}} {{nom}} </span></a>
@@ -86,13 +90,14 @@
       </div>
 
       <div class="onglet-des-prenoms-ok" ng-show="ongletEnCours === 'OK'">
+        <h3>Les prénoms que tu as retenus</h3>
         <div class="row">
           <div class="col-xs-12">
             <table class="table table-striped">
               <tr ng-repeat="prenom in listeDesPrenomsGardes">
-                <td>{{prenom}}</td>  
+                <td><a target="_blank" href="{{prenom | urlVersInfoPrenom}}">{{prenom}}</a></td>  
                 <td><a class="glyphicon glyphicon-thumbs-down"  ng-click="passerLePrenomDeGardeARejete(prenom)"></a></td>
-                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
+                <td><a class="glyphicon glyphicon-info-sign" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
               </tr>
             </table>
           </div>
@@ -108,13 +113,14 @@
       </div>
 
       <div class="onglet-des-prenoms-ko" ng-show="ongletEnCours === 'KO'">
+        <h3>Les prénoms que tu as rejetés</h3>
         <div class="row">
           <div class="col-xs-12">
             <table class="table table-striped">
               <tr ng-repeat="prenom in listeDesPrenomsRejetes">
-                <td>{{prenom}}</td>  
+                <td><a target="_blank" href="{{prenom | urlVersInfoPrenom}}">{{prenom}}</a></td>  
                 <td ng-click="passerLePrenomDeRejeteAGarde(prenom)"><a class="glyphicon glyphicon-thumbs-up"></a></td>
-                <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
+                <td><a class="glyphicon glyphicon-info-sign" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
               </tr>
             </table>
           </div>
@@ -122,6 +128,7 @@
       </div>
 
       <div class="onglet-des-prenoms-tools" ng-show="ongletEnCours === 'TOOLS'">
+        <h3>Boite à outils</h3>
         <div class="row">
           <div class="col-xs-12">
             <a class="btn btn-lg btn-default btn-block" type="button" data-toggle="modal" data-target="#reinitialisationModal">

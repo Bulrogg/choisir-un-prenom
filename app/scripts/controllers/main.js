@@ -17,7 +17,7 @@ angular.module('choisirUnPrenomApp')
 		$scope.listeDesPrenomsGardes = [];
 		$scope.listeDesPrenomsRejetes = [];
 		$scope.prenomAProposer = [];
-		$scope.ongletEnCours = 'TRI';
+		$scope.ongletEnCours = 'CONFIG';
 
 		$scope.onGarde = function() {
 			$scope.listeDesPrenomsGardes.push($scope.prenomPropose);
