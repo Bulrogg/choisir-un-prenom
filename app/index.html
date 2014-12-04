@@ -20,7 +20,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
 
-      <div class="container">
+      <div class="container" ng-class="sexe === 'FILLE' ? 'pour-fille' : (sexe === 'GARCON' ? 'pour-garcon' : 'pour-fille-ou-garcon')">
 
         <div class="header">
           <ul class="nav nav-tabs" role="tablist">
@@ -42,25 +42,21 @@
           </ul>
         </div>
 
-        <div class="onglet-de-tri" ng-show="ongletEnCours === 'CONFIG'">
+        <div class="onglet-de-config" ng-show="ongletEnCours === 'CONFIG'">
           <h3>Avant de commencer</h3>
-          <div class="row parametres">
+          <div class="configuration">
             <form role="form">
               <div class="form-group">
-                <label for="nom" class="col-xs-12 control-label">Le bébé aura pour nom</label>
-                <div class="col-xs-12">
-                  <input id="nom" type="nom" class="form-control" ng-model="nom">
-                </div>
+                <label for="nom" class="control-label">Le bébé aura pour nom</label>
+                <input id="nom" type="nom" class="form-control" ng-model="nom">
               </div>
               <div class="form-group">
-                <label for="sexe" class="control-label col-xs-12">Et ça sera </label>
-                <div class="col-xs-12">
-                  <label><input type="radio" ng-model="sexe" value="FILLE">une fille</label>
-                  <label><input type="radio" ng-model="sexe" value="GARCON">un garçon</label>
-                  <label><input type="radio" ng-model="sexe" value="UN_DES_DEUX">l'un des deux</label>
-                </div>
+                <div><label for="sexe" class="control-label">Et ça sera </label></div>
+                <label class="radio-fille"><input type="radio" ng-model="sexe" value="FILLE">une fille</label>
+                <label class="radio-garcon"><input type="radio" ng-model="sexe" value="GARCON">un garçon</label>
+                <label class="radio-fille-ou-garcon"><input type="radio" ng-model="sexe" value="UN_DES_DEUX">l'un des deux</label>
               </div>
-              <div class="col-xs-12">
+              <div>
                 <div class="btn-group btn-group-lg btn-group-justified">
                   <a class="btn btn-default" role="button" ng-click="ongletEnCours = 'TRI'">Go pour le tri</a>
                 </div>
@@ -82,8 +78,8 @@
          <div class="row actions">
           <div class="col-xs-12">
             <div class="btn-group btn-group-lg btn-group-justified">
-              <a class="btn btn-default" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
-              <a class="btn btn-default" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+              <a class="btn btn-default btn-garde" role="button" ng-click="onGarde()"><span class="glyphicon glyphicon-thumbs-up"></span></a>    
+              <a class="btn btn-default btn-poubelle" role="button" ng-click="poubelle()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             </div>
           </div>
         </div>

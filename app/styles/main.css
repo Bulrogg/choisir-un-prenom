@@ -1,16 +1,44 @@
-.oui-ou-non .nom,
-.oui-ou-non .prenom {
-  font-size: 2em;
-  font-weight: bold;
+.pour-fille {}
+
+.pour-garcon {}
+
+.pour-fille-ou-garcon {}
+
+
+
+.onglet-de-config .radio-fille,
+.onglet-de-config .radio-garcon,
+.onglet-de-config .radio-fille-ou-garcon {
+	font-weight: normal;
+	margin-right: 15px;
+}
+.onglet-de-config input[type='radio'] {
+	margin-right: 3px;
 }
 
-
-.small-device .parametres {
-  margin-top: 1em;
+.onglet-de-tri .btn-garde {
+	color:green;
 }
-
-.small-device .proposition {
+.onglet-de-tri .btn-poubelle {
+	color:red;
+}
+.onglet-de-tri .btn-garde,
+.onglet-de-tri .btn-poubelle {
+	padding-bottom: 0;
+	font-size: 30px;
+}
+.onglet-de-tri .proposition {
   text-align: center;
   font-size: 3em;
   font-weight: bold;
 }
+.onglet-de-tri .actions {
+	margin-top: 15px;
+}
+.onglet-des-prenoms-ok h3,
+onglet-des-prenoms-ko h3,
+onglet-des-prenoms-tools h3 {
+	margin-bottom: 20px;
+}
+
+
