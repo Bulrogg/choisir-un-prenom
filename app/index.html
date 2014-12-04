@@ -87,8 +87,6 @@
             <table class="table table-striped">
               <tr ng-repeat="prenom in listeDesPrenomsGardes">
                 <td>{{prenom}}</td>  
-                <td><a class="glyphicon glyphicon-arrow-up" ng-click="monterLePrenomAGarder($index)" ng-hide="$first"></a></td>
-                <td><a class="glyphicon glyphicon-arrow-down" ng-click="descendreLePrenomAGarder($index)" ng-hide="$last"></a></td>
                 <td><a class="glyphicon glyphicon-thumbs-down"  ng-click="passerLePrenomDeGardeARejete(prenom)"></a></td>
                 <td><a class="glyphicon glyphicon glyphicon-book" target="_blank" href="{{prenom | urlVersInfoPrenom}}"></a></td>
               </tr>

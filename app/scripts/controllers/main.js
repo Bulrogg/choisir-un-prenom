@@ -115,16 +115,6 @@ angular.module('choisirUnPrenomApp')
 			$scope.ongletEnCours = 'TRI';
 		};
 
-		$scope.descendreLePrenomAGarder = function(indexDansLaListe) {
-			$scope.listeDesPrenomsGardes.swap(indexDansLaListe, indexDansLaListe + 1);
-			$scope.persisterDansLeLocalStorage();
-		};
-
-		$scope.monterLePrenomAGarder = function(indexDansLaListe) {
-			$scope.listeDesPrenomsGardes.swap(indexDansLaListe, indexDansLaListe - 1);
-			$scope.persisterDansLeLocalStorage();
-		};
-
 		$scope.$watch('sexe', $scope.reinitialiserSystemePropositionPrenom);
 
 		$scope.chargerDepuisLeLocalStorage();
